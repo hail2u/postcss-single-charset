@@ -1,7 +1,7 @@
 {
   "name": "postcss-single-charset",
   "description": "Pop first @charset rule in CSS file.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Kyo Nagashima <hail2u@gmail.com> (https://kyonagashima.com/)",
   "bugs": {
     "url": "https://github.com/hail2u/postcss-single-charset/issues"
