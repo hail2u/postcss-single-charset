@@ -1,28 +1,47 @@
 'use strict';
 
 module.exports = function (grunt) {
-  var taskName = 'single_charset';
-  var taskDescription = 'Pop first `@charset` rule in each CSS file.';
+  var pkg = require('../package.json');
+  pkg.name = pkg.name.replace(/^postcss-/, '').replace(/-/g, '_');
 
-  grunt.registerMultiTask(taskName, taskDescription, function () {
+  grunt.registerMultiTask(pkg.name, pkg.description, function () {
     var fs = require('fs');
     var postcss = require('postcss');
 
     var options = this.options({});
 
     this.files.forEach(function (file) {
-      var fixed = postcss().use(
+      if (file.src.length !== 1) {
+        grunt.fail.warn('This Grunt plugin does not support multiple source files.');
+      }
+
+      var src = file.src[0];
+      var dest = file.dest;
+
+      if (!fs.existsSync(src)) {
+        grunt.log.warn('Source file "' + src + '" not found.');
+
+        return;
+      }
+
+      if (options.map) {
+        options.from = src;
+        options.to = dest;
+      }
+
+      var processed = postcss().use(
         require('../index')()
       ).process(
-        fs.readFileSync(file.src[0], 'utf8'), options
+        fs.readFileSync(src, 'utf8'), options
       );
 
-      fs.writeFileSync(file.dest, fixed.css);
-      grunt.log.writeln('File "' + file.dest + '" created.');
+      fs.writeFileSync(dest, processed.css);
+      grunt.log.writeln('File "' + dest + '" created.');
 
-      if (fixed.map) {
-        fs.writeFileSync(file.dest + '.map', fixed.map);
-        grunt.log.writeln('File "' + file.dest + '.map" created.');
+      if (processed.map) {
+        var map = dest + '.map';
+        fs.writeFileSync(map, processed.map);
+        grunt.log.writeln('File "' + map + '" created.');
       }
     });
   });
