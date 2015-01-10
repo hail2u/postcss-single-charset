@@ -5,7 +5,6 @@ module.exports = function (grunt) {
   pkg.name = pkg.name.replace(/^postcss-/, '').replace(/-/g, '_');
 
   grunt.registerMultiTask(pkg.name, pkg.description, function () {
-    var fs = require('fs');
     var postcss = require('postcss');
 
     var options = this.options({});
@@ -18,7 +17,7 @@ module.exports = function (grunt) {
       var src = file.src[0];
       var dest = file.dest;
 
-      if (!fs.existsSync(src)) {
+      if (!grunt.file.exists(src)) {
         grunt.log.warn('Source file "' + src + '" not found.');
 
         return;
@@ -32,15 +31,14 @@ module.exports = function (grunt) {
       var processed = postcss().use(
         require('../index')()
       ).process(
-        fs.readFileSync(src, 'utf8'), options
+        grunt.file.read(src), options
       );
-
-      fs.writeFileSync(dest, processed.css);
+      grunt.file.write(dest, processed.css);
       grunt.log.writeln('File "' + dest + '" created.');
 
       if (processed.map) {
         var map = dest + '.map';
-        fs.writeFileSync(map, processed.map);
+        grunt.file.write(map, processed.map);
         grunt.log.writeln('File "' + map + '" created.');
       }
     });
