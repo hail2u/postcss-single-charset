@@ -1,7 +1,5 @@
 'use strict';
 
-var postcss = require('postcss');
-
 module.exports = function () {
   return function (css) {
     var metCharset = false;
