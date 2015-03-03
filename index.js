@@ -3,11 +3,7 @@
 module.exports = function () {
   return function (css) {
     var metCharset = false;
-    css.eachAtRule(function (atRule) {
-      if (atRule.name !== 'charset') {
-        return;
-      }
-
+    css.eachAtRule('charset', function (atRule) {
       if (!metCharset) {
         metCharset = true;
         atRule.parent.prepend(atRule.clone());
