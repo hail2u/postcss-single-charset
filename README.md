@@ -7,8 +7,8 @@ Pop first @charset rule in CSS file.
 SYNOPSIS
 --------
 
-For example, sometimes `input.css` has `@charset` directive in the middle or has
-many `@charset` directives after concatenating many CSS files:
+Sometimes concatenated CSS file has `@charset` directive in the middle or has
+many `@charset` directives:
 
     .foo {
       color: red;
