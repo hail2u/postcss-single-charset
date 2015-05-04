@@ -4,6 +4,45 @@ postcss-single-charset
 Pop first @charset rule in CSS file.
 
 
+SYNOPSIS
+--------
+
+For example, sometimes `input.css` has `@charset` directive in the middle or has
+many `@charset` directives after concatenating many CSS files:
+
+    .foo {
+      color: red;
+    }
+    
+    @charset 'Shift_JIS';
+    
+    .bar {
+      color: green;
+    }
+    
+    @charset 'Shift_JIS';
+    
+    .baz {
+      color: blue;
+    }
+
+This PostCSS plugin fixes these invalid `@charset` like this:
+
+    @charset 'Shift_JIS';
+    
+    .foo {
+      color: red;
+    }
+    
+    .bar {
+      color: green;
+    }
+    
+    .baz {
+      color: blue;
+    }
+
+
 INSTALL
 -------
 
