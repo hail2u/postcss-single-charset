@@ -14,13 +14,13 @@ many `@charset` directives:
       color: red;
     }
     
-    @charset 'Shift_JIS';
+    @charset "Shift_JIS";
     
     .bar {
       color: green;
     }
     
-    @charset 'Shift_JIS';
+    @charset "Shift_JIS";
     
     .baz {
       color: blue;
@@ -28,7 +28,7 @@ many `@charset` directives:
 
 This PostCSS plugin fixes these invalid `@charset` like this:
 
-    @charset 'Shift_JIS';
+    @charset "Shift_JIS";
     
     .foo {
       color: red;
@@ -52,21 +52,22 @@ INSTALL
 USAGE
 -----
 
-    var fs = require('fs');
-    var postcss = require('postcss');
+    var fs = require("fs");
+    var postcss = require("postcss");
     
-    var input = fs.readFileSync('input.css', 'utf8');
-    var output = postcss().use(
-      require('postcss-single-charset')()
-    ).process(input).css;
-    fs.writeFileSync('output.css', output);
+    var css = fs.readFileSync("input.css", "utf8");
+    postcss([
+      require("postcss-single-charset")()
+    ]).process(css).then(function (result) {
+      fs.writeFileSync("output.css", result.css);
+    });
 
 
 ### As Grunt plugin
 
 This package also includes Grunt plugin. You can load like that:
 
-    grunt.loadNpmTasks('postcss-single-charset');
+    grunt.loadNpmTasks("postcss-single-charset");
 
 And configure like that:
 
@@ -74,7 +75,7 @@ And configure like that:
       single_charset: {
         basic: {
           files: {
-            'dest/basic.css': ['src/basic.css']
+            "dest/basic.css": ["src/basic.css"]
           }
         },
     
@@ -86,7 +87,7 @@ And configure like that:
           },
     
           files: {
-            'dest/with_options.css': ['src/with_options.css']
+            "dest/with_options.css": ["src/with_options.css"]
           }
         }
       }
