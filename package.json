@@ -8,14 +8,13 @@
   },
   "dependencies": {
     "fs-extra": "^0.14.0",
-    "postcss": "^4.0.0"
+    "postcss": "^4.1.0"
   },
   "homepage": "https://github.com/hail2u/postcss-single-charset",
   "keywords": [
     "charset",
     "css",
-    "postcss",
-    "postcss-plugins"
+    "postcss-plugin"
   ],
   "license": {
     "type": "MIT",

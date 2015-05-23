@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = function () {
+var postcss = require('postcss');
+
+module.exports = postcss.plugin('single-charset', function () {
   return function (css) {
     var metCharset = false;
     css.eachAtRule('charset', function (atRule) {
@@ -12,4 +14,4 @@ module.exports = function () {
       atRule.removeSelf();
     });
   };
-};
+});
