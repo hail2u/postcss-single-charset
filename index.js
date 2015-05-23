@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-var postcss = require('postcss');
+var postcss = require("postcss");
 
-module.exports = postcss.plugin('single-charset', function () {
+module.exports = postcss.plugin("single-charset", function () {
   return function (css) {
     var metCharset = false;
-    css.eachAtRule('charset', function (atRule) {
+    css.eachAtRule("charset", function (atRule) {
       if (!metCharset) {
         metCharset = true;
         atRule.parent.prepend(atRule.clone());
