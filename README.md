@@ -72,7 +72,7 @@ This package also includes Grunt plugin. You can load like that:
 And configure like that:
 
     grunt.initConfig({
-      single_charset: {
+      singleCharset: {
         basic: {
           files: {
             "dest/basic.css": ["src/basic.css"]

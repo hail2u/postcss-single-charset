@@ -2,7 +2,15 @@
 
 module.exports = function (grunt) {
   var pkg = require("../package.json");
-  pkg.name = pkg.name.replace(/^postcss-/, "").replace(/-/g, "_");
+  pkg.name = pkg.name.toLowerCase().replace(
+    /^postcss-/,
+    ""
+  ).replace(
+    /-(.)/g,
+    function (m, c) {
+      return c.toUpperCase();
+    }
+  );
 
   grunt.registerMultiTask(pkg.name, pkg.description, function () {
     var fs = require("fs-extra");
