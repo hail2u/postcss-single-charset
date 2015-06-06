@@ -12,8 +12,8 @@
   },
   "homepage": "https://github.com/hail2u/postcss-single-charset",
   "keywords": [
-    "charset",
     "css",
+    "charset",
     "postcss-plugin"
   ],
   "license": "MIT",
