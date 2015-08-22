@@ -96,6 +96,8 @@ And configure like that:
 `options` are mainly for Source Maps. See [PostCSS document][1] for more
 information.
 
+This was not tested. I suggest using [`grunt-postcss`][2].
+
 
 LICENSE
 -------
@@ -104,3 +106,4 @@ MIT: http://hail2u.mit-license.org/2015
 
 
 [1]: https://github.com/postcss/postcss#source-map
+[2]: https://github.com/nDmitry/grunt-postcss
