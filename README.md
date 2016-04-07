@@ -63,42 +63,6 @@ USAGE
     });
 
 
-### As Grunt plugin
-
-This package also includes Grunt plugin. You can load like that:
-
-    grunt.loadNpmTasks("postcss-single-charset");
-
-And configure like that:
-
-    grunt.initConfig({
-      singleCharset: {
-        basic: {
-          files: {
-            "dest/basic.css": ["src/basic.css"]
-          }
-        },
-    
-        with_options: {
-          options: {
-            map: {
-              inline: false
-            }
-          },
-    
-          files: {
-            "dest/with_options.css": ["src/with_options.css"]
-          }
-        }
-      }
-    });
-
-`options` are mainly for Source Maps. See [PostCSS document][1] for more
-information.
-
-This was not tested. I suggest using [`grunt-postcss`][2].
-
-
 LICENSE
 -------
 
