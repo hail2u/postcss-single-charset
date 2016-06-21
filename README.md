@@ -1,7 +1,7 @@
 postcss-single-charset
 ======================
 
-Pop first @charset rule in CSS file.
+[PostCSS][1] plugin for popping first @charset rule up in CSS file.
 
 
 SYNOPSIS
@@ -71,3 +71,4 @@ MIT: http://hail2u.mit-license.org/2015
 
 [1]: https://github.com/postcss/postcss#source-map
 [2]: https://github.com/nDmitry/grunt-postcss
+[1]: https://github.com/postcss/postcss
