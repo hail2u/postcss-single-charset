@@ -1,6 +1,6 @@
 {
   "name": "postcss-single-charset",
-  "description": "PostCSS plugin for popping first @charset rule up in CSS file.",
+  "description": "A PostCSS plugin for popping first @charset rule up in CSS file",
   "version": "1.0.0",
   "author": "Kyo Nagashima <hail2u@gmail.com> (https://kyonagashima.com/)",
   "bugs": {
