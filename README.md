@@ -69,6 +69,4 @@ LICENSE
 MIT: http://hail2u.mit-license.org/2015
 
 
-[1]: https://github.com/postcss/postcss#source-map
-[2]: https://github.com/nDmitry/grunt-postcss
 [1]: https://github.com/postcss/postcss
