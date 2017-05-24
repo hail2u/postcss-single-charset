@@ -5,12 +5,14 @@ module.exports = require("postcss").plugin("single-charset", () => {
     let met = false;
 
     c.walkAtRules("charset", (a) => {
-      if (!met) {
-        met = true;
-        a.parent.prepend(a.clone());
+      if (met) {
+        a.remove();
+
+        return;
       }
 
-      a.remove();
+      met = true;
+      a.parent.prepend(a);
     });
   };
 });
