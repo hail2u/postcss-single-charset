@@ -1,13 +1,16 @@
 /* eslint no-console: 0 */
 "use strict";
 
-var assert = require("assert");
-var postcss = require("postcss");
+const assert = require("assert");
+const postcss = require("postcss");
 
-var fixture = '.foo{color:red;}@charset "UTF-8";.bar{color:green;}@charset "EUC-JP";.baz{color:blue}';
-var expected = '@charset "UTF-8";.foo{color:red;}.bar{color:green;}.baz{color:blue}';
+const fixture = '.foo{color:red;}@charset "UTF-8";.bar{color:green;}@charset "EUC-JP";.baz{color:blue}';
+const expected = '@charset "UTF-8";.foo{color:red;}.bar{color:green;}.baz{color:blue}';
 
-var actual = postcss().use(require("./index")()).process(fixture).css;
-assert.strictEqual(actual, expected, "should pop @charset.");
+assert.strictEqual(
+  postcss().use(require("./index")()).process(fixture).css,
+  expected,
+  "should pop 1st @charset, and remove else."
+);
 
 console.log("Ok");
