@@ -1,17 +1,16 @@
 "use strict";
 
-var postcss = require("postcss");
+module.exports = require("postcss").plugin("single-charset", () => {
+  return (c) => {
+    let met = false;
 
-module.exports = postcss.plugin("single-charset", function () {
-  return function (css) {
-    var metCharset = false;
-    css.walkAtRules("charset", function (atRule) {
-      if (!metCharset) {
-        metCharset = true;
-        atRule.parent.prepend(atRule.clone());
+    c.walkAtRules("charset", (a) => {
+      if (!met) {
+        met = true;
+        a.parent.prepend(a.clone());
       }
 
-      atRule.remove();
+      a.remove();
     });
   };
 });
